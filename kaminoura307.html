@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カミノウラ307 - OhEN Wellness</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 400;
+            color: #333;
+            background: #fff;
+            line-height: 1.6;
+        }
+        header {
+            background: #000;
+            color: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #DC143C;
+        }
+        .hero-section {
+            margin-top: 70px;
+            height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1600') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+        }
+        .hero-section h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .content-section {
+            padding: 80px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #000;
+        }
+        .content-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .feature-card {
+            background: #f5f5f5;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        .feature-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #DC143C;
+        }
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+        .cta-section {
+            background: #f5f5f5;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #DC143C;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            margin-top: 20px;
+        }
+        .cta-button:hover {
+            background: #B00020;
+        }
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: #DC143C;
+        }
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 32px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">OhEN Wellness</a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">会社概要</a></li>
+                <li><a href="index.html#services">事業紹介</a></li>
+                <li><a href="index.html#news">お知らせ</a></li>
+                <li><a href="index.html#contact">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero-section">
+        <div>
+            <h1>カミノウラ307</h1>
+            <p style="font-size: 20px;">熊本市中心部、完全プライベートサウナ</p>
+        </div>
+    </div>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">プライベートサウナ カミノウラ307</h2>
+            <p class="content-text">
+                カミノウラ307は、熊本市中心部・上之裏にある完全プライベートサウナです。一人ひとりがゆったりと過ごせる空間で、心身ともにリフレッシュしていただけます。
+            </p>
+            <p class="content-text">
+                完全予約制のプライベート空間で、他のお客様を気にすることなく、ご自身のペースでサウナと水風呂を楽しめます。日々の疲れを癒し、新しい活力を生み出す場所として、多くのお客様にご利用いただいています。
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>完全プライベート</h3>
+                    <p>完全予約制で、他のお客様と顔を合わせることなく、ご自身だけの空間でゆっくりとお過ごしいただけます。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>上質な設備</h3>
+                    <p>高品質なサウナと水風呂を完備。快適な温度管理で、最高のサウナ体験を提供します。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>アクセス良好</h3>
+                    <p>熊本市中心部・上之裏に位置し、アクセス抜群。お仕事帰りや休日のリフレッシュに最適です。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>リラックス空間</h3>
+                    <p>くつろぎのスペースも完備。サウナの後は、ゆっくりと休息していただけます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="section-title">ご予約受付中</h2>
+            <p style="font-size: 18px; color: #666; margin-bottom: 20px;">完全予約制です。お気軽にお問い合わせください。</p>
+            <a href="index.html#contact" class="cta-button">お問い合わせ・ご予約</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html#about">会社概要</a>
+                <a href="index.html#services">事業紹介</a>
+                <a href="index.html#news">お知らせ</a>
+                <a href="index.html#contact">お問い合わせ</a>
+            </div>
+            <p>&copy; 2025 OhEN Wellness. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
