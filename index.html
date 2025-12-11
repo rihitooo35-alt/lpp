@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OhEN Wellness - 熊本から、あなたの人生を豊かにするウェルネスを</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+        body {
+
+            font-family: 'Noto Sans JP', sans-serif;
+
+            font-weight: 400;
+
+            color: #333;
+
+            background: #fff;
+
+            line-height: 1.6;
+
+        }
+
+        /* ヘッダー */
+
+        header {
+
+            background: rgba(255, 255, 255, 0.95);
+
+            backdrop-filter: blur(10px);
+
+            color: #000;
+
+            padding: 20px 0;
+
+            position: fixed;
+
+            width: 100%;
+
+            top: 0;
+
+            z-index: 1000;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+            transition: background 0.3s ease;
+
+        }
+
+        nav {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 0 20px;
+
+        }
+
+        .logo {
+
+            font-size: 24px;
+
+            font-weight: 700;
+
+            color: #000;
+
+            text-decoration: none;
+
+        }
+
+        .nav-links {
+
+            display: flex;
+
+            list-style: none;
+
+            gap: 30px;
+
+        }
+
+        .nav-links a {
+
+            color: #000;
+
+            text-decoration: none;
+
+            font-weight: 500;
+
+            transition: all 0.3s ease;
+
+            position: relative;
+
+            padding-bottom: 5px;
+
+        }
+
+        .nav-links a::after {
+
+            content: '';
+
+            position: absolute;
+
+            bottom: 0;
+
+            left: 0;
+
+            width: 0;
+
+            height: 2px;
+
+            background: #DC143C;
+
+            transition: width 0.3s ease;
+
+        }
+
+        .nav-links a:hover {
+
+            color: #DC143C;
+
+        }
+
+        .nav-links a:hover::after {
+
+            width: 100%;
+
+        }
+
+        /* スライドショー */
+
+        .hero-slider {
+
+            margin-top: 70px;
+
+            position: relative;
+
+            height: 600px;
+
+            overflow: hidden;
+
+        }
+
+        .slide {
+
+            position: absolute;
+
+            width: 100%;
+
+            height: 100%;
+
+            opacity: 0;
+
+            transition: opacity 1s ease-in-out;
+
+            background-size: cover;
+
+            background-position: center;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+        .slide.active {
+
+            opacity: 1;
+
+        }
+
+        .slide-content {
+
+            text-align: center;
+
+            color: #fff;
+
+            background: rgba(0,0,0,0.5);
+
+            padding: 40px;
+
+            border-radius: 10px;
+
+            width: min(90%, 560px);
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 20px;
+
+            align-items: center;
+
+        }
+
+        .slide-content h1 {
+
+            font-size: 48px;
+
+            font-weight: 700;
+
+            margin-bottom: 20px;
+
+        }
+
+        .slide-content p {
+
+            font-size: 20px;
+
+            margin-bottom: 30px;
+
+        }
+
+        .cta-button {
+
+            display: inline-block;
+
+            width: 100%;
+
+            max-width: 320px;
+
+            padding: 15px 40px;
+
+            background: #DC143C;
+
+            color: #fff;
+
+            text-decoration: none;
+
+            font-weight: 500;
+
+            border-radius: 5px;
+
+            transition: background 0.3s ease;
+
+        }
+
+        .cta-button:hover {
+
+            background: #B00020;
+
+        }
+
+        .slider-dots {
+
+            position: absolute;
+
+            bottom: 30px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            display: flex;
+
+            gap: 10px;
+
+        }
+
+        .dot {
+
+            width: 12px;
+
+            height: 12px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.5);
+
+            cursor: pointer;
+
+            transition: background 0.3s ease;
+
+        }
+
+        .dot.active {
+
+            background: #DC143C;
+
+        }
+
+        /* セクション共通 */
+
+        section {
+
+            padding: 80px 20px;
+
+        }
+
+        .container {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+        }
+
+        .section-title {
+
+            text-align: center;
+
+            font-size: 36px;
+
+            font-weight: 700;
+
+            margin-bottom: 50px;
+
+            color: #000;
+
+        }
+
+        .section-subtitle {
+
+            text-align: center;
+
+            font-size: 16px;
+
+            color: #666;
+
+            margin-bottom: 60px;
+
+        }
+
+        /* 事業紹介カード */
+
+        .services-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 40px;
+
+        }
+
+        .service-card {
+
+            background: #fff;
+
+            border: 1px solid #ccc;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            transition: all 0.3s ease;
+
+            cursor: pointer;
+
+        }
+
+        .service-card:hover {
+
+            transform: translateY(-10px);
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+        }
+
+        .service-image {
+
+            width: 100%;
+
+            height: 250px;
+
+            background: #e0e0e0;
+
+            overflow: hidden;
+
+        }
+
+        .service-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: transform 0.3s ease;
+
+        }
+
+        .service-card:hover .service-image img {
+
+            transform: scale(1.1);
+
+        }
+
+        .service-content {
+
+            padding: 30px;
+
+        }
+
+        .service-content h3 {
+
+            font-size: 24px;
+
+            font-weight: 700;
+
+            margin-bottom: 15px;
+
+            color: #000;
+
+        }
+
+        .service-content p {
+
+            color: #666;
+
+            margin-bottom: 20px;
+
+        }
+
+        .service-link {
+
+            color: #333;
+
+            text-decoration: none;
+
+            font-weight: 500;
+
+            transition: color 0.3s ease;
+
+        }
+
+        .service-card:hover .service-link {
+
+            color: #DC143C;
+
+        }
+
+        /* 企業理念 */
+
+        .mission {
+
+            background: #f5f5f5;
+
+        }
+
+        .mission-content {
+
+            text-align: center;
+
+            max-width: 800px;
+
+            margin: 0 auto;
+
+        }
+
+        .mission-content p {
+
+            font-size: 18px;
+
+            line-height: 1.8;
+
+            color: #333;
+
+        }
+
+        /* お知らせ */
+
+        .news-list {
+
+            max-width: 800px;
+
+            margin: 0 auto;
+
+        }
+
+        .news-item {
+
+            border-bottom: 1px solid #ccc;
+
+            padding: 20px 0;
+
+            display: flex;
+
+            gap: 20px;
+
+            transition: background 0.3s ease;
+
+        }
+
+        .news-item:hover {
+
+            background: #f5f5f5;
+
+        }
+
+        .news-date {
+
+            font-weight: 700;
+
+            color: #DC143C;
+
+            min-width: 120px;
+
+        }
+
+        .news-title {
+
+            color: #333;
+
+            text-decoration: none;
+
+        }
+
+        .news-title:hover {
+
+            color: #DC143C;
+
+        }
+
+        /* フッター */
+
+        footer {
+
+            background: #000;
+
+            color: #fff;
+
+            padding: 40px 20px;
+
+            text-align: center;
+
+        }
+
+        .footer-content {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+        }
+
+        .footer-links {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 30px;
+
+            margin-bottom: 20px;
+
+            flex-wrap: wrap;
+
+        }
+
+        .footer-links a {
+
+            color: #fff;
+
+            text-decoration: none;
+
+            transition: color 0.3s ease;
+
+        }
+
+        .footer-links a:hover {
+
+            color: #DC143C;
+
+        }
+
+        /* スクロールアニメーション */
+
+        .fade-in {
+
+            opacity: 0;
+
+            transform: translateY(30px);
+
+            transition: opacity 0.6s ease, transform 0.6s ease;
+
+        }
+
+        .fade-in.visible {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+        }
+
+        /* 追従バナー */
+
+        .sticky-banner {
+
+            position: fixed;
+
+            bottom: 20px;
+
+            left: 20px;
+
+            right: 20px;
+
+            background: #DC143C;
+
+            color: #fff;
+
+            padding: 18px 30px;
+
+            border-radius: 14px;
+
+            box-shadow: 0 8px 30px rgba(220, 20, 60, 0.35);
+
+            z-index: 999;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            font-size: 18px;
+
+            transition: all 0.3s ease;
+
+        }
+
+        .sticky-banner:hover {
+
+            background: #B00020;
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 10px 35px rgba(220, 20, 60, 0.45);
+
+        }
+
+        /* 自動スクロールバナー */
+
+        .auto-scroll-banner {
+
+            background: #f5f5f5;
+
+            padding: 60px 0;
+
+            overflow: hidden;
+
+            position: relative;
+
+        }
+
+        .scroll-wrapper {
+
+            display: flex;
+
+            width: fit-content;
+
+        }
+
+        .scroll-container {
+
+            display: flex;
+
+            gap: 30px;
+
+            animation: scroll 30s linear infinite;
+
+            width: fit-content;
+
+        }
+
+        .scroll-item {
+
+            flex-shrink: 0;
+
+            width: 300px;
+
+            height: 200px;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+        }
+
+        .scroll-item img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+        }
+
+        @keyframes scroll {
+
+            0% {
+
+                transform: translateX(0);
+
+            }
+
+            100% {
+
+                transform: translateX(calc(-300px * 4 - 30px * 4));
+
+            }
+
+        }
+
+        /* レスポンシブ */
+
+        @media (max-width: 768px) {
+
+            .nav-links {
+
+                display: none;
+
+            }
+
+            .hero-slider {
+
+                height: 400px;
+
+            }
+
+            .slide-content h1 {
+
+                font-size: 32px;
+
+            }
+
+            .slide-content p {
+
+                font-size: 16px;
+
+            }
+
+            .section-title {
+
+                font-size: 28px;
+
+            }
+
+            section {
+
+                padding: 60px 20px;
+
+            }
+
+            .services-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .sticky-banner {
+
+                bottom: 20px;
+
+                right: 20px;
+
+                padding: 12px 20px;
+
+                font-size: 14px;
+
+            }
+
+            .scroll-item {
+
+                width: 250px;
+
+                height: 150px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ヘッダー -->
+
+    <header>
+
+        <nav>
+
+            <a href="#" class="logo">OhEN Wellness</a>
+
+            <ul class="nav-links">
+
+                <li><a href="#about">会社概要</a></li>
+
+                <li><a href="#services">事業紹介</a></li>
+
+                <li><a href="#news">お知らせ</a></li>
+
+                <li><a href="#contact">お問い合わせ</a></li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <!-- スライドショー -->
+
+    <div class="hero-slider">
+
+        <div class="slide active" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600') center/cover;">
+
+            <div class="slide-content">
+
+                <h1>LEAD TO BUILD</h1>
+
+                <p>一生モノの体づくりを、あなたの日常に。</p>
+
+                <a href="#services" class="cta-button">詳しく見る</a>
+
+            </div>
+
+        </div>
+
+        <div class="slide" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('sauna.jpg') center/cover;">
+
+            <div class="slide-content">
+
+                <h1>カミノウラ307</h1>
+
+                <p>熊本市中心部、完全プライベートサウナ</p>
+
+                <a href="#services" class="cta-button">詳しく見る</a>
+
+            </div>
+
+        </div>
+
+        <div class="slide" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('oup.JPG') center/cover;">
+
+            <div class="slide-content">
+
+                <h1>O.U.P スポーツアカデミー</h1>
+
+                <p>ラグビーを通じた心身の成長支援</p>
+
+                <a href="#services" class="cta-button">詳しく見る</a>
+
+            </div>
+
+        </div>
+
+        <div class="slide" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('hapileg.JPG') center/cover;">
+
+            <div class="slide-content">
+
+                <h1>ハピレグ</h1>
+
+                <p>ふくらはぎの健康をサポート</p>
+
+                <a href="#services" class="cta-button">詳しく見る</a>
+
+            </div>
+
+        </div>
+
+        <div class="slider-dots">
+
+            <span class="dot active" data-slide="0"></span>
+
+            <span class="dot" data-slide="1"></span>
+
+            <span class="dot" data-slide="2"></span>
+
+            <span class="dot" data-slide="3"></span>
+
+        </div>
+
+    </div>
+
+    <!-- 企業理念 -->
+
+    <section class="mission fade-in">
+
+        <div class="container">
+
+            <h2 class="section-title">私たちの想い</h2>
+
+            <div class="mission-content">
+
+                <p style="font-size: 20px; margin-bottom: 30px; font-weight: 500;">
+
+                    OhEN Wellnessは、熊本から皆様の人生を豊かにするウェルネスをお届けします。
+
+                </p>
+
+                <p style="margin-bottom: 30px;">
+
+                    私たちは、パーソナルジム、プライベートサウナ、ラグビースクール、健康サポート製品を通じて、一人ひとりの「健康で豊かな人生」を支えるパートナーでありたいと考えています。それぞれの事業は、単なるサービス提供ではなく、お客様の人生に寄り添い、共に成長していくことを大切にしています。
+
+                </p>
+
+                <p style="margin-bottom: 30px;">
+
+                    熊本という地から、地域の方々の健康とウェルネスを第一に考え、質の高いサービスを提供し続けます。私たちの使命は、お客様一人ひとりが理想の自分に近づき、充実した毎日を送れるようサポートすることです。
+
+                </p>
+
+                <p>
+
+                    健康は人生の基盤です。OhEN Wellnessは、その基盤を築き、維持するための最良のパートナーとして、これからも皆様と共に歩んでまいります。
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 自動スクロールバナー -->
+
+    <section class="auto-scroll-banner fade-in">
+
+        <div class="scroll-wrapper">
+
+            <div class="scroll-container">
+
+                <div class="scroll-item">
+
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600" alt="LEAD TO BUILD">
+
+                </div>
+
+                <div class="scroll-item">
+
+                    <img src="sauna.jpg" alt="カミノウラ307">
+
+                </div>
+
+                <div class="scroll-item">
+
+                    <img src="oup.JPG" alt="O.U.P スポーツアカデミー">
+
+                </div>
+
+                <div class="scroll-item">
+
+                    <img src="hapileg.JPG" alt="ハピレグ">
+
+                </div>
+
+                <div class="scroll-item">
+
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600" alt="LEAD TO BUILD">
+
+                </div>
+
+                <div class="scroll-item">
+
+                    <img src="sauna.jpg" alt="カミノウラ307">
+
+                </div>
+
+                <div class="scroll-item">
+
+                    <img src="oup.JPG" alt="O.U.P スポーツアカデミー">
+
+                </div>
+
+                <div class="scroll-item">
+
+                    <img src="hapileg.JPG" alt="ハピレグ">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 事業紹介 -->
+
+    <section id="services" class="fade-in">
+
+        <div class="container">
+
+            <h2 class="section-title">事業紹介</h2>
+
+            <p class="section-subtitle">4つの事業で、あなたのウェルネスをサポートします</p>
+
+            <div class="services-grid">
+
+                <div class="service-card">
+
+                    <div class="service-image">
+
+                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600" alt="LEAD TO BUILD">
+
+                    </div>
+
+                    <div class="service-content">
+
+                        <h3>LEAD TO BUILD</h3>
+
+                        <p style="margin-bottom: 15px;">パーソナルジム運営。一生モノの体づくりを、あなたの日常に。通いやすい環境とオンライン対応で、続けられる健康習慣を。</p>
+
+                        <p style="font-size: 14px; color: #999; margin-bottom: 20px;">経験豊富なトレーナーが、あなたの目標に合わせた完全オーダーメイドのトレーニングプログラムを提供。栄養指導も含めたトータルサポートで、理想の体を実現します。</p>
+
+                        <a href="https://ltbgym.com/" target="_blank" rel="noopener noreferrer" class="service-link">詳しく見る →</a>
+
+                    </div>
+
+                </div>
+
+                <div class="service-card">
+
+                    <div class="service-image">
+
+                        <img src="sauna.jpg" alt="カミノウラ307">
+
+                    </div>
+
+                    <div class="service-content">
+
+                        <h3>カミノウラ307</h3>
+
+                        <p style="margin-bottom: 15px;">熊本市中心部・上之裏のプライベートサウナ。完全プライベート空間で、心身ともにリフレッシュ。</p>
+
+                        <p style="font-size: 14px; color: #999; margin-bottom: 20px;">完全予約制で、他のお客様と顔を合わせることなく、ご自身だけの空間でゆっくりとお過ごしいただけます。高品質なサウナと水風呂で、日々の疲れを癒し、新しい活力を生み出します。</p>
+
+                        <a href="https://kaminoura307.com/" target="_blank" rel="noopener noreferrer" class="service-link">詳しく見る →</a>
+
+                    </div>
+
+                </div>
+
+                <div class="service-card">
+
+                    <div class="service-image">
+
+                        <img src="oup.JPG" alt="O.U.P スポーツアカデミー">
+
+                    </div>
+
+                    <div class="service-content">
+
+                        <h3>O.U.P スポーツアカデミー</h3>
+
+                        <p style="margin-bottom: 15px;">小・中学生向けラグビースクール。週1回の練習で、ラグビーを通じた心身の成長をサポートします。</p>
+
+                        <p style="font-size: 14px; color: #999; margin-bottom: 20px;">経験豊富なコーチ陣が、基礎から丁寧に指導。技術向上だけでなく、チームワークや礼儀、協調性など、人間としての成長も大切にしています。初心者でも安心して参加できます。</p>
+
+                        <a href="https://oup.jp/" target="_blank" rel="noopener noreferrer" class="service-link">詳しく見る →</a>
+
+                    </div>
+
+                </div>
+
+                <div class="service-card">
+
+                    <div class="service-image">
+
+                        <img src="hapileg.JPG" alt="ハピレグ">
+
+                    </div>
+
+                    <div class="service-content">
+
+                        <h3>ハピレグ</h3>
+
+                        <p style="margin-bottom: 15px;">ふくらはぎサポーターのマーケティング・販売・ECサイト運営。株式会社YDSとの協業で、日常からスポーツまで幅広くサポート。</p>
+
+                        <p style="font-size: 14px; color: #999; margin-bottom: 20px;">適切な圧力設計により、ふくらはぎの血行を促進し、むくみや冷えを改善。長時間の立ち仕事や運動後の疲労を軽減します。オンラインショップで24時間いつでもご購入いただけます。</p>
+
+                        <a href="https://www.withwith.jp/?pid=168135980&srsltid=AfmBOoqfGKBJkRXYN3yjUqG7vuG1ODDlaMU_rcsVE362tpYi2KYo2UeI" target="_blank" rel="noopener noreferrer" class="service-link">詳しく見る →</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- お知らせ -->
+
+    <section id="news" class="fade-in" style="background: #f5f5f5;">
+
+        <div class="container">
+
+            <h2 class="section-title">お知らせ</h2>
+
+            <div class="news-list">
+
+                <div class="news-item">
+
+                    <span class="news-date">2025.11.15</span>
+
+                    <a href="#" class="news-title">公式ウェブサイトをリニューアルしました</a>
+
+                </div>
+
+                <div class="news-item">
+
+                    <span class="news-date">2025.11.01</span>
+
+                    <a href="#" class="news-title">ハピレグ新商品発売のお知らせ</a>
+
+                </div>
+
+                <div class="news-item">
+
+                    <span class="news-date">2025.10.20</span>
+
+                    <a href="#" class="news-title">O.U.Pスポーツアカデミー新規会員募集中</a>
+
+                </div>
+
+                <div class="news-item">
+
+                    <span class="news-date">2025.10.05</span>
+
+                    <a href="#" class="news-title">LEAD TO BUILD オンラインレッスン開始のお知らせ</a>
+
+                </div>
+
+                <div class="news-item">
+
+                    <span class="news-date">2025.09.20</span>
+
+                    <a href="#" class="news-title">カミノウラ307 新規オープン記念キャンペーン実施中</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- お問い合わせフォーム -->
+
+    <section id="contact" class="fade-in">
+
+        <div class="container">
+
+            <h2 class="section-title">お問い合わせ</h2>
+
+            <p style="text-align: center; margin-bottom: 40px; color: #666;">各事業に関するご質問・ご相談は、お気軽にお問い合わせください</p>
+
+            <form id="contact-form" style="max-width: 600px; margin: 0 auto;">
+
+                <div style="margin-bottom: 25px;">
+
+                    <label for="name" style="display: block; margin-bottom: 8px; font-weight: 500; color: #333;">お名前 <span style="color: #DC143C;">*</span></label>
+
+                    <input type="text" id="name" name="name" required style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; font-family: 'Noto Sans JP', sans-serif;">
+
+                </div>
+
+                <div style="margin-bottom: 25px;">
+
+                    <label for="phone" style="display: block; margin-bottom: 8px; font-weight: 500; color: #333;">電話番号 <span style="color: #DC143C;">*</span></label>
+
+                    <input type="tel" id="phone" name="phone" required style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; font-family: 'Noto Sans JP', sans-serif;">
+
+                </div>
+
+                <div style="margin-bottom: 25px;">
+
+                    <label for="inquiry-type" style="display: block; margin-bottom: 8px; font-weight: 500; color: #333;">お問い合わせ形式 <span style="color: #DC143C;">*</span></label>
+
+                    <select id="inquiry-type" name="inquiry-type" required style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; font-family: 'Noto Sans JP', sans-serif; background: #fff;">
+
+                        <option value="">選択してください</option>
+
+                        <option value="gym">ジムの体験について</option>
+
+                        <option value="sauna">サウナの予約について</option>
+
+                        <option value="rugby">ラグビースクールの体験について</option>
+
+                        <option value="hapiregu">ハピレグの購入について</option>
+
+                    </select>
+
+                </div>
+
+                <div style="margin-bottom: 30px;">
+
+                    <label for="message" style="display: block; margin-bottom: 8px; font-weight: 500; color: #333;">その他・自由記述</label>
+
+                    <textarea id="message" name="message" rows="6" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; font-family: 'Noto Sans JP', sans-serif; resize: vertical;"></textarea>
+
+                </div>
+
+                <div style="text-align: center;">
+
+                    <button type="submit" style="padding: 15px 50px; background: #DC143C; color: #fff; border: none; border-radius: 5px; font-size: 18px; font-weight: 500; cursor: pointer; transition: background 0.3s ease; font-family: 'Noto Sans JP', sans-serif;" onmouseover="this.style.background='#B00020'" onmouseout="this.style.background='#DC143C'">送信する</button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- フッター -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="footer-links">
+
+                <a href="#about">会社概要</a>
+
+                <a href="#services">事業紹介</a>
+
+                <a href="#news">お知らせ</a>
+
+                <a href="#contact">お問い合わせ</a>
+
+                <a href="#privacy">プライバシーポリシー</a>
+
+            </div>
+
+            <p>&copy; 2025 OhEN Wellness. All Rights Reserved.</p>
+
+        </div>
+
+    </footer>
+
+    <!-- 追従バナー -->
+
+    <a href="https://ltbgym.com/" target="_blank" rel="noopener noreferrer" class="sticky-banner">
+
+        ジムの体験はこちら
+
+    </a>
+
+    <script>
+
+        // スライドショー
+
+        let currentSlide = 0;
+
+        const slides = document.querySelectorAll('.slide');
+
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(n) {
+
+            slides.forEach(slide => slide.classList.remove('active'));
+
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            
+
+            currentSlide = n;
+
+            if (currentSlide >= slides.length) currentSlide = 0;
+
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+
+            
+
+            slides[currentSlide].classList.add('active');
+
+            dots[currentSlide].classList.add('active');
+
+        }
+
+        function nextSlide() {
+
+            showSlide(currentSlide + 1);
+
+        }
+
+        // 自動再生
+
+        setInterval(nextSlide, 5000);
+
+        // ドットクリック
+
+        dots.forEach((dot, index) => {
+
+            dot.addEventListener('click', () => showSlide(index));
+
+        });
+
+        // スクロールアニメーション
+
+        const observerOptions = {
+
+            threshold: 0.1,
+
+            rootMargin: '0px 0px -100px 0px'
+
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add('visible');
+
+                }
+
+            });
+
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+
+            observer.observe(el);
+
+        });
+
+        // スムーススクロール
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+            anchor.addEventListener('click', function (e) {
+
+                e.preventDefault();
+
+                const target = document.querySelector(this.getAttribute('href'));
+
+                if (target) {
+
+                    target.scrollIntoView({
+
+                        behavior: 'smooth',
+
+                        block: 'start'
+
+                    });
+
+                }
+
+            });
+
+        });
+
+        // お問い合わせフォーム送信
+
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+
+            e.preventDefault();
+
+            alert('お問い合わせありがとうございます。\n内容を確認次第、ご連絡させていただきます。');
+
+            this.reset();
+
+        });
+
+        // ヘッダーのスクロール時の背景変更
+
+        window.addEventListener('scroll', function() {
+
+            const header = document.querySelector('header');
+
+            if (window.scrollY > 100) {
+
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+
+            } else {
+
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+
+
